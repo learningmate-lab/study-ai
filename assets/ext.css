@@ -1,0 +1,393 @@
+/* 스프링·임베디드·AWS AI 스터디 — extensions loaded after app.css (index.html).
+   Kept out of app.css on purpose: app.css is also read live by the SAP site build (sapai/patch_app.py), which has its
+   own copy of the quiz + tablet layers in sapai/src/sap.css.
+     1. sidebar exam hub, chat suggestions, quiz module      (ported from sapai/src/sap.css)
+     2. quiz extensions for AWS: multi-answer, per-option why, scaled score   (aws_prep/engine/quiz-aws.css)
+     3. AWS concept diagrams, light + dark                   (aws_prep/aws-diagrams.css)
+     4. tablet / touch layer, tuned for iPad Pro 11" (834×1194 / 1194×834)    (ported from sapai/src/sap.css) */
+
+/* --- sidebar exam hub + chat suggestions --- */
+.ch-item.exam-item .ch-num { background: var(--co-exam-bg); color: var(--co-exam); }
+.suggest { display: flex; flex-direction: column; gap: 6px; align-items: stretch; max-width: 340px; margin: 14px auto 0; text-align: left; }
+.suggest-h { font-size: 12px; color: var(--muted); font-weight: 600; }
+.suggest-q { text-align: left; border: 1px solid var(--line); background: var(--panel); border-radius: 12px; padding: 8px 12px; font-size: 13.5px; color: var(--text); line-height: 1.45; }
+.suggest-q:hover { border-color: var(--accent); color: var(--accent); }
+
+/* --- quiz module --- */
+.qz-wrap { max-width: 900px; margin: 0 auto; padding: 24px 24px 80px; }
+.qz-head { display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; background: linear-gradient(135deg, var(--co-exam-bg) 0%, var(--panel) 75%); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+.qz-head h2 { margin: 2px 0 6px; font-size: 21px; line-height: 1.35; }
+.qz-kick { font-size: 12.5px; font-weight: 700; color: var(--co-exam); letter-spacing: .02em; }
+.qz-sub { color: var(--text-2); font-size: 14px; line-height: 1.6; }
+.qz-counts { display: flex; gap: 6px; flex-wrap: wrap; }
+.qz-type { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 9px; white-space: nowrap; }
+.qz-type.t-mcq { background: var(--d-a-f); color: var(--d-a-s); }
+.qz-type.t-short { background: var(--d-b-f); color: var(--d-b-s); }
+.qz-type.t-essay { background: var(--d-d-f); color: var(--d-d-s); }
+.qz-prog { display: flex; gap: 14px; align-items: center; flex-shrink: 0; }
+.qz-prog-t { font-size: 13px; color: var(--text-2); line-height: 1.7; }
+.qz-prog-t b { color: var(--text); }
+.ring { --p: 0; width: 74px; height: 74px; border-radius: 50%; display: grid; place-content: center; text-align: center; background: radial-gradient(closest-side, var(--panel) 78%, transparent 79% 100%), conic-gradient(var(--co-exam) calc(var(--p) * 1%), var(--line) 0); }
+.ring b { font-size: 18px; line-height: 1; } .ring small { font-size: 10.5px; color: var(--muted); }
+.ring.big { width: 120px; height: 120px; } .ring.big b { font-size: 34px; }
+.qz-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 12px; }
+.seg.sm button { padding: 4px 11px; font-size: 13px; }
+.chip-btn.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.qz-dots { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 12px; }
+.qz-dot { min-width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); font-size: 12.5px; font-weight: 600; color: var(--text-2); padding: 0 6px; }
+.qz-dot.cur { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); color: var(--accent); }
+.qz-dot.s-ok { background: var(--co-ans-bg); border-color: var(--co-ans); color: var(--co-ans); }
+.qz-dot.s-bad { background: var(--co-check-bg); border-color: var(--co-check); color: var(--co-check); }
+.qz-dot.s-part { background: var(--co-warn-bg); border-color: var(--co-warn); color: var(--co-warn); }
+.qz-dot.s-pending { background: var(--co-exam-bg); border-color: var(--co-exam); color: var(--co-exam); }
+.qz-dot.s-ans { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.qz-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; box-shadow: var(--shadow); margin-bottom: 14px; }
+.qz-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+.qz-pos { font-weight: 700; color: var(--text-2); }
+.qz-lv { margin-left: auto; color: var(--co-warn); letter-spacing: 1px; } .qz-lv i { color: var(--line-2); font-style: normal; }
+.qz-q { font-size: 16.5px; line-height: 1.7; font-weight: 600; }
+.qz-q p { margin: 0 0 8px; }
+.qz-q .codebox { font-weight: 400; }
+.qz-opts { display: flex; flex-direction: column; gap: 8px; margin: 12px 0 4px; }
+.qz-opt { display: flex; gap: 10px; align-items: flex-start; text-align: left; border: 1.5px solid var(--line); background: var(--panel); border-radius: 12px; padding: 10px 14px; font-size: 15px; line-height: 1.55; color: var(--text); width: 100%; }
+button.qz-opt:not(:disabled):hover { border-color: var(--accent); background: var(--accent-soft); }
+.qz-opt .qz-l { font-weight: 700; color: var(--accent); flex-shrink: 0; }
+.qz-opt .qz-ot { flex: 1; min-width: 0; }
+.qz-opt code { font-size: .92em; }
+.qz-opt.picked { border-color: var(--accent); background: var(--accent-soft); }
+.qz-opt.correct { border-color: var(--co-ans); background: var(--co-ans-bg); }
+.qz-opt.correct .qz-l { color: var(--co-ans); }
+.qz-opt.wrong { border-color: var(--co-check); background: var(--co-check-bg); }
+.qz-opt.wrong .qz-l { color: var(--co-check); }
+.qz-opt.dim { opacity: .62; }
+.qz-opt:disabled { cursor: default; }
+.qz-mine { margin-left: auto; font-size: 11.5px; font-weight: 700; color: var(--co-check); flex-shrink: 0; }
+.qz-opt.correct .qz-mine { color: var(--co-ans); }
+.qz-short { display: flex; gap: 8px; margin: 12px 0 4px; }
+.qz-short input, .qz-xin { flex: 1; font: inherit; font-size: 16px; border: 1.5px solid var(--line-2); border-radius: 10px; padding: 9px 12px; background: var(--panel); color: var(--text); font-family: "JetBrains Mono", Consolas, "Pretendard Variable", monospace; }
+.qz-short input:focus, .qz-essay:focus, .qz-xin:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.qz-essay { width: 100%; font: inherit; font-size: 15px; line-height: 1.65; border: 1.5px solid var(--line-2); border-radius: 12px; padding: 10px 12px; margin: 12px 0 4px; background: var(--panel); color: var(--text); resize: vertical; min-height: 110px; }
+.qz-acts { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; margin-top: 12px; align-items: center; }
+.qz-acts.center { justify-content: center; }
+.qz-acts .ask-btn { margin-right: auto; }
+.primary.big { padding: 10px 26px; font-size: 16px; border-radius: 12px; }
+.qz-fb { margin-top: 12px; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--line); background: var(--panel-2); }
+.qz-fb.ok { border-color: var(--co-ans); background: var(--co-ans-bg); }
+.qz-fb.bad { border-color: var(--co-check); background: var(--co-check-bg); }
+.qz-fb.neutral { background: var(--panel-2); }
+.qz-verdict { font-weight: 800; font-size: 15.5px; margin-bottom: 6px; }
+.qz-fb.ok .qz-verdict, .okc { color: var(--co-ans); } .qz-fb.bad .qz-verdict, .badc { color: var(--co-check); }
+.qz-model { display: flex; gap: 10px; align-items: baseline; margin: 4px 0; font-size: 15px; }
+.qz-model span, .qz-shortrv span { font-size: 12px; font-weight: 700; color: var(--muted); flex-shrink: 0; min-width: 58px; }
+.qz-acc { font-size: 13px; color: var(--text-2); }
+.qz-explain { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line-2); font-size: 14.5px; line-height: 1.7; }
+.qz-explain .md p { margin: 0 0 6px; }
+.qz-explain .page-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.qz-ai { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.qz-ai small { font-size: 11px; color: var(--muted); margin-left: 3px; }
+.qz-ai-out { margin-top: 8px; font-size: 14px; line-height: 1.6; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.qz-ai-fb { width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+.qz-grade { display: flex; flex-direction: column; gap: 10px; }
+.qz-side { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.qz-col { border: 1.5px solid var(--line); border-radius: 12px; background: var(--panel); overflow: hidden; }
+.qz-col.model { border-color: var(--co-ans); }
+.qz-col-h { font-size: 12.5px; font-weight: 800; padding: 6px 12px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+.qz-col.model .qz-col-h { background: var(--co-ans-bg); color: var(--co-ans); }
+.qz-col-b { padding: 10px 12px; font-size: 14.5px; line-height: 1.7; white-space: pre-wrap; }
+.qz-col-b.md { white-space: normal; } .qz-col-b.md p { margin: 0 0 6px; }
+.qz-rubric { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); padding: 8px 12px; }
+.qz-rub-h { font-size: 13.5px; color: var(--text-2); padding: 2px 0 6px; display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+.qz-score { margin-left: auto; font-weight: 800; color: var(--co-exam); font-size: 15px; }
+.qz-rub { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: start; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.55; cursor: pointer; }
+.qz-rub input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--co-ans); }
+.qz-pts { font-weight: 700; color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+.qz-hit { font-size: 12px; color: var(--co-ans); background: var(--co-ans-bg); border-radius: 6px; padding: 0 6px; white-space: nowrap; }
+.qz-rub-ai { grid-column: 2 / 4; font-size: 13px; color: var(--text-2); background: var(--co-exam-bg); border-radius: 8px; padding: 4px 8px; }
+.qz-rub-ai b { color: var(--co-exam); }
+.qz-empty { text-align: center; color: var(--muted); padding: 40px 10px; font-size: 15px; background: var(--panel); border: 1px dashed var(--line-2); border-radius: 16px; }
+.qz-sum { text-align: center; }
+.qz-sum-big { font-size: 44px; font-weight: 800; color: var(--co-exam); }
+.qz-sum-sub { color: var(--text-2); margin-bottom: 6px; }
+.qz-sum .qz-acts { justify-content: center; }
+.qz-group { margin-bottom: 16px; }
+.qz-group-h { font-weight: 800; font-size: 15px; margin: 4px 2px 8px; }
+.qz-group-h span { background: var(--co-check-bg); color: var(--co-check); border-radius: 999px; padding: 0 8px; font-size: 12px; margin-left: 4px; }
+.qz-item { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; margin-bottom: 8px; }
+.qz-item summary { display: flex; gap: 10px; align-items: center; padding: 10px 14px; cursor: pointer; list-style: none; font-size: 14.5px; }
+.qz-item summary::-webkit-details-marker { display: none; }
+.qz-stem { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qz-tries { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.qz-item-b { padding: 0 10px 10px; }
+.qz-item-b .qz-card { box-shadow: none; margin: 0; }
+.qz-setup .qz-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.qz-num { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--text-2); font-weight: 600; }
+.qz-num input { width: 96px; font: inherit; font-size: 18px; font-weight: 700; border: 1.5px solid var(--line-2); border-radius: 10px; padding: 6px 10px; background: var(--panel); color: var(--text); }
+.qz-num small { font-weight: 400; color: var(--muted); }
+.qz-chs { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.qz-chs-h { font-weight: 800; font-size: 14px; margin-bottom: 4px; }
+.qz-chs .check { font-size: 14px; }
+.qz-hrow { display: grid; grid-template-columns: minmax(90px, auto) 1fr 52px auto; gap: 10px; align-items: center; font-size: 13.5px; padding: 4px 0; }
+.qz-hrow .bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.qz-hrow .bar i { display: block; height: 100%; background: var(--co-exam); border-radius: 99px; }
+.qz-hrow small { color: var(--muted); }
+.qz-exambar { position: sticky; top: 0; z-index: 5; display: flex; gap: 12px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
+.qz-timer { font-size: 18px; font-variant-numeric: tabular-nums; } .qz-timer b { font-size: 22px; }
+.qz-exambar.hurry .qz-timer { color: var(--err); animation: blink 1.2s infinite; }
+.qz-answered { font-size: 13.5px; color: var(--text-2); }
+.qz-dots.exam { position: sticky; top: 62px; z-index: 4; background: var(--bg); padding: 6px 0; }
+.qz-card.xq { scroll-margin-top: 120px; }
+.qz-result { text-align: left; }
+.qz-res-row { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; margin: 8px 0 12px; }
+.qz-res-t { display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; }
+.qz-res-detail { font-size: 17px; font-weight: 800; }
+.qz-pend { color: var(--co-exam); background: var(--co-exam-bg); border-radius: 8px; padding: 5px 10px; font-size: 13.5px; }
+.qz-chbars { border-top: 1px dashed var(--line-2); padding-top: 8px; }
+.qz-card.rv { border-left: 5px solid var(--line-2); }
+.qz-card.rv.r-ok { border-left-color: var(--co-ans); } .qz-card.rv.r-bad { border-left-color: var(--co-check); }
+.qz-card.rv.r-part { border-left-color: var(--co-warn); } .qz-card.rv.r-pending { border-left-color: var(--co-exam); }
+.qz-exam-list.only-wrong .qz-card.rv.r-ok { display: none; }
+.qz-shortrv { display: flex; flex-direction: column; gap: 4px; margin: 10px 0; }
+.qz-shortrv div { display: flex; gap: 10px; align-items: baseline; }
+.qz-hist .qz-hrow { grid-template-columns: 110px 1fr 52px auto; }
+@media (max-width: 900px) { .qz-wrap { padding: 14px 10px 80px; } }
+@media (max-width: 700px) {
+  .qz-head { flex-direction: column; padding: 14px 16px; }
+  .qz-card { padding: 14px 14px; border-radius: 14px; }
+  .qz-side { grid-template-columns: 1fr; }
+  .qz-q { font-size: 15.5px; }
+  .qz-hrow, .qz-hist .qz-hrow { grid-template-columns: 74px 1fr 44px; }
+  .qz-hrow small { display: none; }
+  .qz-exambar { flex-wrap: wrap; gap: 8px; }
+  .qz-dots.exam { top: 98px; }
+}
+
+/* --- chat polish: tool row wraps instead of squeezing labels; mermaid in chat follows the theme --- */
+.msg-tools { flex-wrap: wrap; align-items: center; row-gap: 2px; }
+.msg-tools button, .msg-tools .route-badge, .msg-meta { white-space: nowrap; }
+#chatLog .diagram.chat-dg { background: var(--dg-bg); text-align: left; }
+#chatLog .diagram.chat-dg svg { display: block; margin: 0 auto; }
+@media (max-width: 900px) {
+  .chat-title { white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .chat-head .chat-scope { display: none; }
+  .chat-actions { flex-shrink: 0; }
+}
+
+/* ===== quiz engine — AWS extensions (multi-answer, per-option explanations, scaled score) =====
+   Add after the SAP quiz styles (sapai/src/sap.css .qz-* rules) when porting the quiz engine into studyai. */
+.qz-pick { display: inline-block; font-size: 12px; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: var(--co-warn-bg); color: var(--co-warn); border: 1px solid color-mix(in srgb, var(--co-warn) 45%, transparent); }
+.qz-opts.multi .qz-l { min-width: 1.4em; }
+.qz-opts.multi .qz-opt.picked .qz-l::after { content: " ✓"; font-size: .85em; }
+.qz-why { display: block; margin-top: 5px; font-size: 13.5px; line-height: 1.55; color: var(--text-2); }
+.qz-opt.correct .qz-why { color: var(--text); }
+.qz-opt.has-why.dim { opacity: .82; }
+.qz-scaled { font-size: 15px; margin-bottom: 4px; }
+.qz-scaled b { font-size: 1.25em; }
+.qz-lvs { font-size: 13.5px; color: var(--text-2); margin-bottom: 4px; }
+
+/* ===== AWS course diagrams (aws_prep) =====
+   The AWS concept diagrams come from the student CBT site (scratchpad/cloud/diagram_kit/kit.css) and use their own class
+   names (box, soft, th, t, ts, tw, ln-hl, svc + category …). Every such <svg> carries class="aws"; studyai adds "dg".
+   This file maps those classes onto the studyai theme tokens so the diagrams follow light/dark like the rest of the notes.
+   Append it to studyai/site/assets/app.css (after the existing svg.dg rules).
+   Selectors use "svg.aws.aws" (class repeated on purpose) so they beat the generic "svg.dg .box / .t / .ln" rules of
+   studyai, which use the same class names with different meanings and sizes. Font sizes and the vertical centring
+   (dominant-baseline) are the kit's own values — the chip/label layout of the diagrams was computed with them. */
+:root {
+  --aws-az: #0b63b8; --aws-priv-f: #e3eefa; --aws-hl: #e07a00; --aws-hl-t: #b34d00; --aws-user: #232f3e;
+  --aws-region: #00807f; --aws-cloud: #232f3e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --aws-az: #74b4ff; --aws-priv-f: #16314a; --aws-hl: #ffa53d; --aws-hl-t: #ffb661; --aws-user: #51657a;
+    --aws-region: #4fd1d0; --aws-cloud: #c9d5d9;
+  }
+}
+:root[data-theme="dark"] {
+  --aws-az: #74b4ff; --aws-priv-f: #16314a; --aws-hl: #ffa53d; --aws-hl-t: #ffb661; --aws-user: #51657a;
+  --aws-region: #4fd1d0; --aws-cloud: #c9d5d9;
+}
+
+svg.aws.aws { overflow: visible; }
+svg.aws.aws text { dominant-baseline: middle; fill: var(--text); }
+/* text */
+svg.aws.aws .t  { font-size: 13px; font-weight: 400; fill: var(--text); }
+svg.aws.aws .tb { font-size: 13px; font-weight: 700; fill: var(--text); }
+svg.aws.aws .ts { font-size: 11.5px; font-weight: 400; fill: var(--dg-sub); }
+svg.aws.aws .th { font-size: 14px; font-weight: 800; fill: var(--text); }
+svg.aws.aws .tw { font-size: 12.5px; font-weight: 700; fill: #ffffff; }          /* on the coloured service chips (same in both themes) */
+svg.aws.aws .to { font-size: 12.5px; font-weight: 700; fill: var(--aws-hl-t); }
+svg.aws.aws .tg { font-size: 12.5px; font-weight: 700; fill: var(--d-c-s); }
+svg.aws.aws .tr { font-size: 12.5px; font-weight: 700; fill: var(--d-e-s); }
+/* containers */
+svg.aws.aws .cloud  { fill: var(--panel); stroke: var(--aws-cloud); stroke-width: 1.5; }
+svg.aws.aws .region { fill: var(--panel-2); stroke: var(--aws-region); stroke-width: 1.5; stroke-dasharray: 6 4; }
+svg.aws.aws .az     { fill: none; stroke: var(--aws-az); stroke-width: 1.5; stroke-dasharray: 5 4; }
+svg.aws.aws .vpc    { fill: none; stroke: var(--d-d-s); stroke-width: 2; }
+svg.aws.aws .pub    { fill: var(--d-c-f); stroke: var(--d-c-s); stroke-width: 1.2; }
+svg.aws.aws .priv   { fill: var(--aws-priv-f); stroke: var(--aws-az); stroke-width: 1.2; }
+/* boxes */
+svg.aws.aws .box    { fill: var(--panel); stroke: var(--d-0-s); stroke-width: 1.2; }
+svg.aws.aws .soft   { fill: var(--d-0-f); stroke: none; }
+svg.aws.aws .hl     { fill: var(--d-b-f); stroke: var(--aws-hl); stroke-width: 2; }
+svg.aws.aws .ok     { fill: var(--d-c-f); stroke: var(--d-c-s); stroke-width: 1.4; }
+svg.aws.aws .bad    { fill: var(--d-e-f); stroke: var(--d-e-s); stroke-width: 1.4; }
+/* service chips: AWS architecture-icon category colours, kept in both themes (white label on top) */
+svg.aws.aws .svc { stroke: none; }
+svg.aws.aws .compute { fill: #ed7100; } svg.aws.aws .storage { fill: #7aa116; } svg.aws.aws .database { fill: #c925d1; }
+svg.aws.aws .network { fill: #8c4fff; } svg.aws.aws .security { fill: #dd344c; } svg.aws.aws .integration { fill: #e7157b; }
+svg.aws.aws .mgmt { fill: #e7157b; } svg.aws.aws .user { fill: var(--aws-user); } svg.aws.aws .generic { fill: #5f6b7a; }
+/* lines + arrowheads (markers are inside each svg: <path class="ah|ah-hl|ah-ok|ah-bad">) */
+svg.aws.aws .ln     { fill: none; stroke: var(--d-ln); stroke-width: 1.6; }
+svg.aws.aws .ln-hl  { fill: none; stroke: var(--aws-hl); stroke-width: 2.4; }
+svg.aws.aws .ln-ok  { fill: none; stroke: var(--d-c-s); stroke-width: 2; }
+svg.aws.aws .ln-bad { fill: none; stroke: var(--d-e-s); stroke-width: 2; }
+svg.aws.aws .dash   { stroke-dasharray: 5 4; }
+svg.aws.aws .ah { fill: var(--d-ln); } svg.aws.aws .ah-hl { fill: var(--aws-hl); }
+svg.aws.aws .ah-ok { fill: var(--d-c-s); } svg.aws.aws .ah-bad { fill: var(--d-e-s); }
+
+/* ===================================================================================================
+   Tablet / touch (iPad) — content first. Breakpoints match the panel logic patched into app.js:
+     desk   ≥1400px                          nav + tutor docked; ☰ / ✦ 튜터 collapse them (remembered per viewer)
+     dock   1000–1399px landscape            nav = drawer; tutor = docked side pane, closed by default
+     drawer 600–1399px portrait, 600–999px   nav = left drawer; tutor = right slide-over drawer; scrim behind
+     sheet  <600px                           nav = left drawer; tutor = bottom sheet
+   =================================================================================================== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+:root { --top-h: calc(54px + env(safe-area-inset-top, 0px)); --kb: 0px; }
+#app { height: 100vh; height: calc(100dvh - var(--kb)); }
+.topbar { height: var(--top-h); padding-top: env(safe-area-inset-top, 0px); padding-left: max(14px, env(safe-area-inset-left, 0px)); padding-right: max(14px, env(safe-area-inset-right, 0px)); }
+button, .thumb, .qz-opt, summary { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+/* panel toggles in the top bar */
+.tutor-btn { width: auto; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; color: var(--text); }
+.tutor-btn .spark { font-size: 15px; }
+#btnMenu.on, .tutor-btn.on { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); color: var(--accent); }
+.side-close { display: none; }
+#fabChat { display: none !important; } /* the top-bar ✦ 튜터 button replaces the floating one */
+.scrim { display: none; position: fixed; left: 0; right: 0; top: var(--top-h); bottom: 0; z-index: 45; background: rgba(6, 12, 15, .45); -webkit-tap-highlight-color: transparent; }
+.sidebar, .chat-log, .thumbs, .modal-card, .view, .quick { overscroll-behavior: contain; }
+.modal-card { max-height: 92vh; max-height: 92dvh; }
+.lightbox-card { max-height: 94vh; max-height: 94dvh; }
+.lightbox-card img { max-height: calc(94vh - 70px); max-height: calc(94dvh - 70px); }
+.composer { padding-bottom: max(10px, env(safe-area-inset-bottom, 0px)); }
+.thumbs { padding-bottom: max(14px, env(safe-area-inset-bottom, 0px)); }
+
+/* ---------- desk (≥1400): collapsible panes; freed space goes to the content ---------- */
+@media (min-width: 1400px) {
+  body.nav-collapsed .sidebar { display: none; }
+  body.chat-collapsed .chat, body.chat-collapsed .resizer { display: none; }
+  #btnCloseChat { display: none; } /* the top-bar ✦ 튜터 toggles it; keeps the desktop tutor header as it was */
+  body.nav-collapsed .note, body.chat-collapsed .note { max-width: 1180px; }
+  body.nav-collapsed .note .sec > .md > :is(p, ul, ol, h3, h4, blockquote, .callout, .explain, ul.keys, details.more),
+  body.chat-collapsed .note .sec > .md > :is(p, ul, ol, h3, h4, blockquote, .callout, .explain, ul.keys, details.more),
+  body.nav-collapsed .note .hero-body > :is(p, ul, ol), body.chat-collapsed .note .hero-body > :is(p, ul, ol) { max-width: 52em; }
+}
+
+/* ---------- below desk: the chapter list is a drawer ---------- */
+@media (max-width: 1399.98px) {
+  .sidebar { position: fixed; top: var(--top-h); bottom: 0; left: 0; z-index: 50; width: min(320px, 86vw); transform: translateX(-104%); visibility: hidden;
+    transition: transform .22s ease, visibility 0s linear .22s; box-shadow: 12px 0 40px rgba(0, 0, 0, .28); padding-left: env(safe-area-inset-left, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body.side-open .sidebar { transform: none; visibility: visible; transition: transform .22s ease; }
+  body.side-open .scrim { display: block; }
+  .side-close { display: inline-grid; position: absolute; top: 8px; right: 10px; z-index: 1; }
+  .side-title { padding-right: 60px; min-height: 52px; }
+  .resizer { display: none; }
+  .chat-head .chat-scope { display: none; }
+  /* content fills the screen; prose keeps a reading measure, figures / tables / diagrams use the full card */
+  .note { max-width: 1180px; }
+  .note .sec > .md > :is(p, ul, ol, h3, h4, blockquote, .callout, .explain, ul.keys, details.more), .note .hero-body > :is(p, ul, ol) { max-width: 52em; }
+  .qz-wrap { max-width: 980px; }
+}
+
+/* ---------- drawer: tutor slides over from the right (portrait tablets, narrow landscape) ---------- */
+@media (min-width: 600px) and (max-width: 1399.98px) and (orientation: portrait), (min-width: 600px) and (max-width: 999.98px) {
+  .chat { position: fixed; top: var(--top-h); right: 0; bottom: var(--kb); left: auto; z-index: 70; width: min(460px, 100vw) !important; height: auto; max-width: none; min-width: 0;
+    border-top: 0; border-left: 1px solid var(--line-2); border-radius: 0; box-shadow: -12px 0 40px rgba(0, 0, 0, .28); overflow: hidden;
+    transform: translateX(104%); visibility: hidden; transition: transform .22s ease, visibility 0s linear .22s; padding-right: env(safe-area-inset-right, 0px); }
+  body.chat-open .chat { transform: none; visibility: visible; transition: transform .22s ease; }
+  body.chat-open .scrim { display: block; }
+}
+/* ---------- dock: landscape tablets get the tutor as a toggleable side pane (two panes) ---------- */
+@media (min-width: 1000px) and (max-width: 1399.98px) and (orientation: landscape) {
+  .chat { display: none; width: clamp(340px, 33vw, 440px) !important; min-width: 0; max-width: none; border-left: 1px solid var(--line-2); }
+  body.chat-open .chat { display: flex; }
+}
+/* ---------- sheet: phones keep the bottom sheet; it rides above the on-screen keyboard ---------- */
+@media (max-width: 599.98px) {
+  .chat { bottom: var(--kb); max-height: calc(100dvh - var(--kb) - 24px); visibility: hidden; transition: transform .22s, visibility 0s linear .22s; }
+  body.chat-open .chat { visibility: visible; transition: transform .22s; }
+  body.chat-open .scrim { display: block; top: 0; z-index: 65; }
+  .tutor-btn { padding: 0 10px; } .tutor-btn .tb-l { display: none; }
+  .topbar { gap: 6px; padding-left: max(8px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); }
+  .brand { display: none; }
+}
+/* portrait tablets (600–900) were getting the phone compaction from the shared sheet — give the reading column room back */
+@media (min-width: 600px) and (max-width: 900px) {
+  .topbar { padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+  .ch-head { padding: 12px 20px 0; }
+  .note { padding: 18px 18px 80px; --note-fs: 16px; }
+  .sec-head { padding: 14px 18px 12px; flex-wrap: nowrap; }
+  .sec-tools { width: auto; padding: 2px 0 0; margin-top: 0; justify-content: flex-end; }
+  .sec > .md { padding: 14px 20px 18px; }
+  .stage { padding: 10px 16px 8px; }
+}
+/* tutor tables: cells keep a readable minimum width and the table scrolls inside its box instead of breaking words per letter */
+#chatLog .md th, #chatLog .md td { min-width: 4.5em; word-break: keep-all; }
+
+/* ---------- slides: no empty box — the slide fits the stage; in tall columns it pins to the top at full width ---------- */
+.stage-img-wrap { background: transparent; border-color: transparent; touch-action: pan-y pinch-zoom; }
+.stage-img-wrap img { border-radius: 6px; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.thumbs { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.slides.fitw .stage { flex: none; padding-bottom: 12px; }
+.slides.fitw .stage-img-wrap { flex: none; display: block; overflow: visible; }
+.slides.fitw .stage-img-wrap img { width: 100%; height: auto; max-width: 100%; max-height: none; }
+.slides.fitw .thumbs { flex: 1; min-height: 0; flex-wrap: wrap; align-content: flex-start; overflow-x: hidden; overflow-y: auto; gap: 10px; }
+.slides.fitw .pagetext { max-height: none; }
+
+/* ---------- touch: ≥44px targets, no hover-only controls, 16px inputs (no zoom on focus) ---------- */
+@media (hover: none) {
+  .nav-arrow { opacity: .8; background: rgba(18, 30, 36, .62); border: 1px solid rgba(255, 255, 255, .28); }
+  .stage-img-wrap .nav-arrow:active { opacity: 1; }
+}
+@media (pointer: coarse) {
+  .icon-btn, .icon-btn.sm { width: 44px; height: 44px; }
+  .tutor-btn { width: auto; min-width: 44px; justify-content: center; }
+  #btnLock { height: 44px; }
+  .seg button { min-height: 44px; padding-left: 16px; padding-right: 16px; }
+  .ch-item { min-height: 52px; padding: 10px 12px; }
+  .toc-i { min-height: 44px; align-items: center; }
+  .tabs button { min-height: 48px; padding-left: 16px; padding-right: 16px; }
+  .chip-btn, .ask-btn, .ask-mini, .page-chip, .ghost, .primary, .suggest-q { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .suggest-q { justify-content: flex-start; }
+  .chip-btn { padding: 6px 15px; font-size: 14px; }
+  .page-chip { padding: 2px 12px; font-size: 13.5px; }
+  .ask-mini { padding: 2px 14px; font-size: 13.5px; }
+  .copy-btn, .msg-tools button, .diagram-tools button { min-height: 40px; padding: 4px 10px; }
+  .ctx-chip button { min-width: 36px; min-height: 36px; }
+  details.more > summary, .qz-item summary { min-height: 48px; }
+  .quick { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .quick::-webkit-scrollbar { display: none; }
+  .quick .chip-btn { flex: none; }
+  .chat-head { flex-wrap: wrap; row-gap: 6px; }
+  .chat-actions { margin-left: auto; }
+  .send { width: 48px; height: 48px; }
+  .input-row textarea, .field input, .field select, .qz-essay, .qz-short input, .qz-xin, .stage-bar input { font-size: 16px; }
+  .stage-bar input { width: 64px; min-height: 44px; }
+  .nav-arrow { width: 46px; height: 76px; }
+  .thumb img { height: 72px; }
+  .qz-dots { gap: 6px; }
+  .qz-dot { min-width: 44px; height: 44px; font-size: 14px; }
+  .qz-opt { min-height: 52px; padding: 12px 16px; }
+  .qz-rub input, .check input { width: 22px; height: 22px; }
+  .qz-num input { min-height: 48px; }
+  /* mock exam: the question navigator stays one swipeable row under the sticky timer bar */
+  .qz-dots.exam { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; top: 60px; padding: 12px 2px 8px; }
+  .qz-dots.exam::-webkit-scrollbar { display: none; }
+  .qz-dots.exam .qz-dot { flex: none; }
+  .sel-ask { padding: 10px 16px; font-size: 15px; }
+}
+/* touch below desk: one-row tutor header (export to a .md file is a desk feature) */
+@media (pointer: coarse) and (max-width: 1399.98px) { #btnExport { display: none; } .chat-head { padding: 8px 10px 8px 14px; } }
+@media (pointer: coarse) and (max-width: 700px) { .qz-dots.exam { top: 104px; } }
+
+/* settings: bundled API key notice (encrypted Pages build) */
+.key-bundle { margin: 6px 0 4px; padding: 7px 10px; border-radius: 9px; background: var(--accent-soft); color: var(--text); font-size: 13px; line-height: 1.5; }

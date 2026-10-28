@@ -83,12 +83,19 @@
       <div class="chat-head">
         <div class="chat-title"><span class="spark">✦</span> AI 튜터 <span class="chat-scope" id="chatScope"></span></div>
         <div class="chat-actions">
-          <button class="chip-btn" id="btnQuiz" title="튜터가 이 장으로 5문제 퀴즈를 내요">퀴즈 내줘</button>
+          <button class="chip-btn" id="btnQuiz" title="튜터가 5문제 퀴즈를 내요 (범위: 이 장 / 과목 전체)">퀴즈 내줘</button>
           <button class="icon-btn sm" id="btnNewChat" title="새 대화">＋</button>
           <button class="icon-btn sm" id="btnExport" title="대화를 마크다운으로 내보내기">⤓</button>
           <button class="icon-btn sm" id="btnDelChat" title="이 장 대화 삭제">🗑</button>
           <button class="icon-btn sm" id="btnCloseChat" title="튜터 닫기" aria-label="튜터 닫기">✕</button>
         </div>
+      </div>
+      <div class="scope-row" id="scopeRow" hidden>
+        <div class="scope-seg" id="scopeSeg" role="tablist" aria-label="튜터가 아는 범위">
+          <button type="button" role="tab" data-scope="ch" aria-selected="true"><span class="sc-ic">📄</span>이 장</button>
+          <button type="button" role="tab" data-scope="course" aria-selected="false"><span class="sc-ic">📚</span>과목 전체</button>
+        </div>
+        <div class="scope-cost" id="scopeCost"></div>
       </div>
       <div class="chat-log" id="chatLog"></div>
       <div class="composer">

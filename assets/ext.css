@@ -481,3 +481,40 @@ body.img-dragging .img-drop-hint { display: grid; }
 }
 @media (max-width: 599.98px) { .input-row .attach.paste { display: none; } } /* phones: one 📎 button (long-press paste still works) */
 /* <<< chatkit */
+
+/* >>> course scope + code exams (spring · embedded) */
+.scope-row { flex: none; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 8px 12px; border-bottom: 1px solid var(--line-soft); background: var(--side); }
+.scope-seg { display: inline-flex; background: var(--inset); border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 3px; flex: none; }
+.scope-seg button { min-height: 40px; border: 0; background: transparent; border-radius: 9px; padding: 0 14px; font-weight: 700; font-size: 14px; color: var(--text-2); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer; }
+.scope-seg button:hover:not(:disabled) { background: var(--inset-2); color: var(--text); }
+.scope-seg button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: var(--shadow-sm); }
+.scope-seg button:disabled { opacity: .45; cursor: not-allowed; }
+.scope-seg .sc-ic { font-size: 15px; }
+.scope-cost { font-size: 12.5px; color: var(--muted); line-height: 1.35; min-width: 0; flex: 1 1 140px; }
+.scope-cost b { color: var(--text-2); } .scope-cost small { display: block; font-size: 11.5px; }
+@media (pointer: coarse) { .scope-seg button { min-height: 44px; padding: 0 16px; } }
+.qz-type.t-err { background: var(--d-e-f); color: var(--d-e-s); }
+.qz-cat { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 9px; white-space: nowrap; background: var(--inset); color: var(--text-2); border: 1px solid var(--line-soft); }
+.qz-ai-tag { display: inline-block; font-size: 12px; font-weight: 800; border-radius: 999px; padding: 1px 9px; white-space: nowrap; background: var(--co-warn-bg); color: var(--co-warn); border: 1px dashed var(--co-warn); }
+.qz-errg + .qz-errg { margin-top: 12px; }
+.qz-errh { font-weight: 800; font-size: 14px; color: var(--text-2); margin: 6px 0 6px; }
+.qz-fb.part { border-color: var(--co-warn); background: var(--co-warn-bg); } .qz-fb.part .qz-verdict, .partc { color: var(--co-warn); }
+.qz-card.rv.r-part { border-left-color: var(--co-warn); }
+.qz-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px 18px; margin-top: 4px; }
+.qz-bars-h { font-weight: 800; font-size: 13px; color: var(--muted); margin: 2px 0 2px; }
+.qz-hrow.weak b { color: var(--co-check); }
+.qz-genrow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.qz-genl { font-weight: 700; font-size: 13.5px; color: var(--text-2); min-width: 54px; }
+.qz-gensel { min-height: 40px; border-radius: 9px; border: 1px solid var(--line); background: var(--panel); color: var(--text); padding: 0 10px; font: inherit; max-width: 100%; }
+.qz-gencost { font-size: 13.5px; color: var(--text-2); margin: 4px 0 8px; } .qz-gencost small { color: var(--muted); }
+.qz-genq + .qz-genq { margin-top: 14px; }
+.qz-genbar { display: flex; justify-content: flex-end; margin-bottom: 6px; }
+.qz-genbar .chip-btn.on { background: var(--co-ans-bg); color: var(--co-ans); border-color: var(--co-ans); }
+.qz-mine-row { grid-template-columns: auto 1fr auto !important; }
+.qz-mine-row .qz-stem { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.qz-len button { min-height: 40px; }
+.qz-untimed { display: flex; align-items: center; gap: 6px; margin: 2px 0 10px; font-size: 14px; }
+.qz-compose { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; margin-bottom: 12px; }
+.qz-compose > span { font-weight: 700; color: var(--text-2); margin-right: 2px; } .qz-compose small { color: var(--muted); flex-basis: 100%; }
+@media (pointer: coarse) { .qz-len button, .qz-gensel { min-height: 44px; } }
+/* <<< course scope + code exams */

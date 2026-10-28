@@ -518,3 +518,13 @@ body.img-dragging .img-drop-hint { display: grid; }
 .qz-compose > span { font-weight: 700; color: var(--text-2); margin-right: 2px; } .qz-compose small { color: var(--muted); flex-basis: 100%; }
 @media (pointer: coarse) { .qz-len button, .qz-gensel { min-height: 44px; } }
 /* <<< course scope + code exams */
+
+/* 손코딩 · 공지 형식 모의고사 (2026-10-29) */
+.qz-essay.qz-code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 14px; line-height: 1.55; tab-size: 4; white-space: pre; overflow-x: auto; min-height: 200px; }
+.qz-col-b.code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; white-space: pre; overflow-x: auto; line-height: 1.5; }
+.qz-cat.c-hand { background: color-mix(in srgb, #d9480f 14%, transparent); color: #c2410c; }
+.qz-cat.c-long { background: color-mix(in srgb, #1971c2 14%, transparent); color: #1d4ed8; }
+.qz-cat.c-mcq4 { background: color-mix(in srgb, #2f9e44 14%, transparent); color: #15803d; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .qz-cat.c-hand { color: #fdba74; } :root:not([data-theme="light"]) .qz-cat.c-long { color: #93c5fd; } :root:not([data-theme="light"]) .qz-cat.c-mcq4 { color: #86efac; } }
+:root[data-theme="dark"] .qz-cat.c-hand { color: #fdba74; } :root[data-theme="dark"] .qz-cat.c-long { color: #93c5fd; } :root[data-theme="dark"] .qz-cat.c-mcq4 { color: #86efac; }
+@media (max-width: 1100px) { .qz-essay.qz-code { font-size: 16px; } }
